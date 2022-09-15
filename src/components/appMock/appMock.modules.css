@@ -2,14 +2,15 @@
   height: 100vh;
   background: aqua;
   background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-image: url('./player-nrl.jpg');
+  background-size: contain;
+  background-image: url('./player-bg.jpg');
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.chatBtn {
-   
+.player {
+  background-size: cover;
+  height: 100vh;
+  background-image: url('./player-nrl.jpg');
 }
