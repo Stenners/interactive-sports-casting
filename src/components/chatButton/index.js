@@ -1,6 +1,8 @@
+import './chatBtn.modules.css'
+
 function ChatButton() {
   return (
-    <button>Chat!</button>
+    <button className="chatBtn">Chat!</button>
   );
 }
 
