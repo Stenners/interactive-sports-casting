@@ -1,10 +1,10 @@
 // import './App.css';
-import Call from './components/Call'
+import Video from './components/Video'
 
 function App() {
   return (
     <div className="App">
-      <Call />
+      <Video />
     </div>
   );
 }

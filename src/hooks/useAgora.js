@@ -3,8 +3,6 @@ import { useState, useEffect } from 'react';
 import AIDenoiserEnabler from "./AIDenoiserEnabler";
 
 export default function useAgora(client) {
-  const [localVideoTrack, setLocalVideoTrack] = useState(undefined);
-  const [localAudioTrack, setLocalAudioTrack] = useState(undefined);
 
   const [joinState, setJoinState] = useState(false);
 
@@ -12,39 +10,29 @@ export default function useAgora(client) {
 
   async function createLocalTracks(audioConfig, videoConfig) {
     const [microphoneTrack, cameraTrack] = await AgoraRTC.createMicrophoneAndCameraTracks();
-    setLocalAudioTrack(microphoneTrack);
-    setLocalVideoTrack(cameraTrack);
     return [microphoneTrack, cameraTrack];
   }
 
   async function join(appid, channel, token, uid = null) {
     if (!client) return;
-    const [microphoneTrack, cameraTrack] = await createLocalTracks();
+    // const [microphoneTrack, cameraTrack] = await createLocalTracks();
 
     client.setClientRole("audience", {level: 3});
     await client.join(appid, channel, token || null);
 
     const enableDenoiser4AudioTrack = AIDenoiserEnabler();
-    await enableDenoiser4AudioTrack.enabler(microphoneTrack);
+    //await enableDenoiser4AudioTrack.enabler(microphoneTrack);
 
 
-    await client.publish([microphoneTrack, cameraTrack]);
+    // await client.publish([microphoneTrack, cameraTrack]);
 
     (window).client = client;
-    (window).videoTrack = cameraTrack;
+    // (window).videoTrack = cameraTrack;
 
     setJoinState(true);
   }
 
   async function leave() {
-    if (localAudioTrack) {
-      localAudioTrack.stop();
-      localAudioTrack.close();
-    }
-    if (localVideoTrack) {
-      localVideoTrack.stop();
-      localVideoTrack.close();
-    }
     setRemoteUsers([]);
     setJoinState(false);
     await client?.leave();
@@ -82,8 +70,6 @@ export default function useAgora(client) {
   }, [client]);
 
   return {
-    localAudioTrack,
-    localVideoTrack,
     joinState,
     leave,
     join,
