@@ -7,9 +7,6 @@ const socket = io("https://rocky-plateau-75193.herokuapp.com/");
 function Chat() {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
-  // useEffect(() => {
-  //   console.log("conneting");
-  // }, []);
 
   socket.on("chat message", function (msg) {
     console.log(msg);
@@ -21,7 +18,7 @@ function Chat() {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (message) {
-      socket.emit("chat message", message);
+      socket.emit("chat message", { message: message, name: 'Anth' });
       setMessage("");
     }
   };
@@ -30,7 +27,7 @@ function Chat() {
     <div className="chatWrap">
       <ul id="messages">
         {messages.map((msg) => (
-          <li>{msg}</li>
+          <li>{`${msg.name}: ${msg.message}`}</li>
         ))}
       </ul>
       <form id="form" action="" onSubmit={handleSubmit}>

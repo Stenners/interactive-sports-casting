@@ -7,7 +7,7 @@ function Overlay({ show, click }) {
   const overlayHidden = show ? '': 'hidden';
   return (
     <div className={`overlay ${overlayHidden}`}>
-      <BsFillArrowDownCircleFill color="white" size="2em" onClick={click} />
+      <BsFillArrowDownCircleFill color="white" size="2em" onClick={click} className="hideIcon" />
       <Stream />
       <Chat />
     </div>
