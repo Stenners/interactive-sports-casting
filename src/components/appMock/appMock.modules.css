@@ -1,6 +1,6 @@
 .mock {
   height: 100vh;
-  background: aqua;
+  background: black;
   background-position: center;
   background-size: contain;
   background-image: url('./player-bg.jpg');
@@ -9,8 +9,13 @@
   align-items: center;
 }
 
+.playerWrap {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  align-items: center;
+}
+
 .player {
-  background-size: cover;
-  height: 100vh;
-  background-image: url('./player-nrl.jpg');
+  height:100%;
 }
