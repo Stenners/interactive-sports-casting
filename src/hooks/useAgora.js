@@ -1,33 +1,15 @@
-import AgoraRTC from 'agora-rtc-sdk-ng';
 import { useState, useEffect } from 'react';
-import AIDenoiserEnabler from "./AIDenoiserEnabler";
 
 export default function useAgora(client) {
-
   const [joinState, setJoinState] = useState(false);
-
   const [remoteUsers, setRemoteUsers] = useState([]);
-
-  async function createLocalTracks(audioConfig, videoConfig) {
-    const [microphoneTrack, cameraTrack] = await AgoraRTC.createMicrophoneAndCameraTracks();
-    return [microphoneTrack, cameraTrack];
-  }
 
   async function join(appid, channel, token, uid = null) {
     if (!client) return;
-    // const [microphoneTrack, cameraTrack] = await createLocalTracks();
 
-    client.setClientRole("audience", {level: 3});
     await client.join(appid, channel, token || null);
 
-    const enableDenoiser4AudioTrack = AIDenoiserEnabler();
-    //await enableDenoiser4AudioTrack.enabler(microphoneTrack);
-
-
-    // await client.publish([microphoneTrack, cameraTrack]);
-
     (window).client = client;
-    // (window).videoTrack = cameraTrack;
 
     setJoinState(true);
   }
@@ -40,21 +22,25 @@ export default function useAgora(client) {
 
   useEffect(() => {
     if (!client) return;
-    setRemoteUsers(client.remoteUsers);
+    setRemoteUsers(client.remoteUsers.filter(item => item._audio_added_));
 
     const handleUserPublished = async (user, mediaType) => {
       await client.subscribe(user, mediaType);
       // toggle rerender while state of remoteUsers changed.
       setRemoteUsers(remoteUsers => Array.from(client.remoteUsers));
     }
+
     const handleUserUnpublished = (user) => {
       setRemoteUsers(remoteUsers => Array.from(client.remoteUsers));
     }
+
     const handleUserJoined = (user) => {
-      setRemoteUsers(remoteUsers => Array.from(client.remoteUsers));
+      setRemoteUsers(remoteUsers => Array.from(client.remoteUsers).filter(item => item._audio_added_));
     }
+
     const handleUserLeft = (user) => {
       setRemoteUsers(remoteUsers => Array.from(client.remoteUsers));
+
     }
     client.on('user-published', handleUserPublished);
     client.on('user-unpublished', handleUserUnpublished);
