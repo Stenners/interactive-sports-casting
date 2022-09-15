@@ -1,0 +1,14 @@
+.overlay {
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 100vw;
+  background-color: #212123;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.hidden {
+  display: none;
+}

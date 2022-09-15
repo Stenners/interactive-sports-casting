@@ -1,12 +1,10 @@
-import './chatBtn.modules.css'
+import "./chatBtn.modules.css";
 
-function handleClick() {
-  console.log('sup');
-}
-
-function ChatButton() {
+function ChatButton({ click }) {
   return (
-    <button className="chatBtn" onClick={handleClick}>Chat!</button>
+    <button className="chatBtn" onClick={click}>
+      Chat!
+    </button>
   );
 }
 
