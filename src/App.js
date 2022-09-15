@@ -1,10 +1,10 @@
 // import './App.css';
-import Video from './components/Video'
+import ListnrMock from './components/appMock';
 
 function App() {
   return (
     <div className="App">
-      <Video />
+      <ListnrMock />
     </div>
   );
 }
