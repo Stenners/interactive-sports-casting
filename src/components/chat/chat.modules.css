@@ -7,7 +7,7 @@
 .chatWrap form {
   width: 100%;
   display: flex;
-  height: 3rem;
+  height: 6rem;
   box-sizing: border-box;
 }
 .chatWrap input {
@@ -15,18 +15,18 @@
   padding: 0 1rem;
   flex-grow: 1;
   border-radius: 1rem;
+  height: 2rem;
   margin: 0.5rem 0.5rem 0.5rem 0rem;
 }
-.chatWrap ul {
-  list-style-type: none;
+.chatWrap .messages {
   padding: 0;
   flex-grow: 1;
   overflow-y: auto;
 }
-.chatWrap li {
-  padding: 0.5rem;
+.chatWrap .messages > div {
+  padding: 0.45rem;
 }
-.chatWrap li:nth-child(odd) {
+.chatWrap  .messages > div:nth-child(odd) {
   background-color: #262626;
 }
 .chatWrap button {
@@ -37,4 +37,7 @@
   border-radius: 1rem;
   outline: none;
   color: #fff;
+}
+.name {
+  opacity: 0.7;
 }
