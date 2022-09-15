@@ -9,10 +9,13 @@ function Chat() {
   const [messages, setMessages] = useState([]);
 
   socket.on("chat message", function (msg) {
-    console.log(msg);
     const messagesArr = [...messages];
     messagesArr.push(msg);
     setMessages(messagesArr);
+  });
+
+  socket.on("history", function (history) {
+    setMessages(history);
   });
 
   const handleSubmit = (event) => {
@@ -27,7 +30,7 @@ function Chat() {
     <div className="chatWrap">
       <ul id="messages">
         {messages.map((msg) => (
-          <li>{`${msg.name}: ${msg.message}`}</li>
+          <li key={msg.message}>{`${msg.name}: ${msg.message}`}</li>
         ))}
       </ul>
       <form id="form" action="" onSubmit={handleSubmit}>
