@@ -1,5 +1,5 @@
 import { io } from "socket.io-client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./chat.modules.css";
 
 const socket = io("https://rocky-plateau-75193.herokuapp.com/");
