@@ -1,0 +1,15 @@
+.mock {
+  height: 100vh;
+  background: aqua;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url('./player-nrl.jpg');
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chatBtn {
+   
+}
