@@ -1,13 +1,7 @@
-import AgoraRTC, {ILocalAudioTrack,IRemoteAudioTrack} from "agora-rtc-sdk-ng";
+import AgoraRTC from "agora-rtc-sdk-ng";
 import {AIDenoiserExtension} from "agora-extension-ai-denoiser"
 
-export default function AIDenoiserEnabler()
-:
-{
-    enabler: Function,
-    controler: Function,
-}
-{
+export default function AIDenoiserEnabler() {
     //let enabledAIDenoiserExtentionFlag = true; // by default, enabled AI Denoiser Extension.
 
     // Create AIDenoiserExtension instance, please make sure this instance is a singleton, assetsPath is the path of wasm and wasmjs.
@@ -34,14 +28,14 @@ export default function AIDenoiserEnabler()
         await processor.disable();
     }
 
-    async function enabler(audioTrack: ILocalAudioTrack | IRemoteAudioTrack): Promise<void>{
+    async function enabler(audioTrack){
         audioTrack.pipe(processor).pipe(audioTrack.processorDestination);
 
         await processor.enable();
     }
 
     //Control the denoiser function enabled or disabled.
-    async function controler(flag: boolean) {
+    async function controler(flag) {
         if(flag){
             if(!processor.enabled)
                 await processor.enable();

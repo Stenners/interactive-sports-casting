@@ -1,13 +1,7 @@
-import { ILocalVideoTrack, IRemoteVideoTrack, ILocalAudioTrack, IRemoteAudioTrack } from "agora-rtc-sdk-ng";
 import { useRef, useEffect } from "react";
 
-export interface VideoPlayerProps {
-  videoTrack: ILocalVideoTrack | IRemoteVideoTrack | undefined;
-  audioTrack: ILocalAudioTrack | IRemoteAudioTrack | undefined;
-}
-
-const MediaPlayer = (props: VideoPlayerProps) => {
-  const container = useRef<HTMLDivElement>(null);
+const MediaPlayer = (props) => {
+  const container = useRef(null);
   useEffect(() => {
     if (!container.current) return;
     props.videoTrack?.play(container.current);
