@@ -41,3 +41,16 @@
 .name {
   opacity: 0.7;
 }
+
+.messageWrap {
+  display: flex;
+  align-content: center;
+  text-align: center;
+}
+
+.avatar {
+  width: 22px;
+  height: 22px;
+  margin-right: 6px;
+  margin-top: -2px;
+}
