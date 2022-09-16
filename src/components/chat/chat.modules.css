@@ -3,7 +3,6 @@
   flex-direction: column;
   color: white;
   height:60vh;
-  flex-grow: 1;
 }
 .chatWrap form {
   width: 100%;
