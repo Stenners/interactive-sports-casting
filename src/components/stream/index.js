@@ -5,7 +5,7 @@ import MediaPlayer from '../MediaPlayer';
 import './index.css';
 
 const APP_ID = "a11ae97f0b2846969505953e6350156b";
-const TOKEN = "007eJxTYGBbJLmaTZ5p17XzUormh5YJ30ie7R+3nmdzMN9D56S4+QsVGBINDRNTLc3TDJKMLEzMLM0sTQ1MLU2NU82MTQ0MTc2SWnuUklnuKSdzTT7FyMgAgSA+O0NJanFJcXIiAwMAvNAePw==";
+const TOKEN = "007eJxTYMhUZ+1/Ii31csdKvkVzo+0ZFCp+X5f2uGy36dRWzrkibtwKDMYp5hYpRqmWxsZmSSapScaJKSmmqWYGqcYpRmmplqlmId+Vk694qCbvjehiYGJgBEMQn52hJLW4pDg5kYGBlQEEAAMmIOU=";
 const CHANNEL = "testsca";
 
 const client = AgoraRTC.createClient({ codec: 'h264', mode: 'rtc', role: 'audience' });
