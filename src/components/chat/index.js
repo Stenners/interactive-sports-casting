@@ -11,10 +11,11 @@ const avatarBg = generateColor();
 
 function Chat() {
   const bottomRef = useRef(null);
+  const inputRef = useRef(null);
   const [message, setMessage] = useState("");
   const [name, setName] = useState("anth");
   const [messages, setMessages] = useState([]);
-  const [offSet, setOffSet] = useState(-20);
+  const [offSet, setOffSet] = useState(-15);
 
   useEffect(() => {
     const name = generateName();
@@ -54,14 +55,20 @@ function Chat() {
         bgColor: avatarBg,
       });
       setMessage("");
-      bottomRef.current.focus();
     }
 
-    setOffSet(-20);
+    setOffSet(-15);
   };
 
   const handleFocus = () => {
-    setOffSet(-40);
+    setOffSet(-45);
+  };
+
+  const handleKeyUp = (e) => {
+    if (e.code === "Enter") {
+      inputRef.current.blur();
+    }
+    // console.log('🇧🇷 %c e ', 'background: #222; color: #fff', e);
   };
 
   return (
@@ -70,7 +77,7 @@ function Chat() {
         {messages.map((msg) => (
           <div key={msg.message} className="messageWrap">
             <img src={msg.avatar} alt="avatar" className="avatar" style={{backgroundColor: msg.bgColor}} />
-            <span className="name">{msg.name}</span>: ${msg.message}
+            <span className="name">{msg.name}</span>: {msg.message}
           </div>
         ))}
       </div>
@@ -82,6 +89,8 @@ function Chat() {
           value={message}
           onChange={(event) => setMessage(event.target.value)}
           onFocus={handleFocus}
+          onKeyUp={handleKeyUp}
+          ref={inputRef}
         />
         {/* <button>Send</button> */}
       </form>
