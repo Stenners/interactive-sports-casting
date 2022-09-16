@@ -70,9 +70,7 @@ function Chat() {
         {messages.map((msg) => (
           <div key={msg.message} className="messageWrap">
             <img src={msg.avatar} alt="avatar" className="avatar" style={{backgroundColor: msg.bgColor}} />
-            <span>
-              {`${msg.name}: ${msg.message}`}
-            </span>
+            <span className="name">{msg.name}</span>: ${msg.message}
           </div>
         ))}
       </div>
