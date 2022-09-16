@@ -24,7 +24,7 @@ function Chat() {
     const messages = bottomRef.current;
     messages.scrollTop = messages.scrollHeight;
     console.log(messages.scrollHeight);
-  }, [message]);
+  }, [messages, message]);
 
   socket.on("chat message", function (msg) {
     const messagesArr = [...messages];
