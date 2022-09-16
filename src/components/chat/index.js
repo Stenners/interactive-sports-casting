@@ -54,6 +54,7 @@ function Chat() {
         bgColor: avatarBg,
       });
       setMessage("");
+      bottomRef.current.focus();
     }
 
     setOffSet(-10);

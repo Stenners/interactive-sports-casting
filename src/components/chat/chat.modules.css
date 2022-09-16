@@ -23,6 +23,7 @@
   padding: 0;
   flex-grow: 1;
   overflow-y: auto;
+  background-color: #212123;
 }
 .chatWrap .messages > div {
   padding: 0.45rem;
