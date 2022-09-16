@@ -61,14 +61,14 @@ function Chat() {
   };
 
   const handleFocus = () => {
-    setOffSet(-45);
+    setOffSet(-42);
   };
 
   const handleKeyUp = (e) => {
-    if (e.code === "Enter") {
+    if (e.code === "Enter" || e.keyCode === 13) {
       inputRef.current.blur();
+      bottomRef.current.focus();
     }
-    // console.log('🇧🇷 %c e ', 'background: #222; color: #fff', e);
   };
 
   return (
