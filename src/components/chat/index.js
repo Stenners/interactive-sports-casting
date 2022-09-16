@@ -7,6 +7,7 @@ import { AvatarGenerator } from '../avatar';
 
 const socket = io("https://rocky-plateau-75193.herokuapp.com/");
 const generator = new AvatarGenerator();
+const avatarBg = generateColor();
 
 function Chat() {
   const bottomRef = useRef(null);
@@ -37,7 +38,7 @@ function Chat() {
     const msgHistory = history.map(item => ({
       ...item,
       avatar: generator.generateRandomAvatar(item.name),
-      bgColor: generateColor(),
+      bgColor: item.bgColor,
     }))
     setMessages(msgHistory);
   });
@@ -49,7 +50,7 @@ function Chat() {
         message: message,
         name,
         avatar: generator.generateRandomAvatar(name),
-        bgColor: generateColor()
+        bgColor: avatarBg,
       });
       setMessage("");
     }

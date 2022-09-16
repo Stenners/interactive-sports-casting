@@ -46,7 +46,6 @@
 .messageWrap {
   display: flex;
   align-content: center;
-  text-align: center;
 }
 
 .avatar {
