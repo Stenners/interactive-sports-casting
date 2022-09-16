@@ -10,7 +10,9 @@
   padding: 20px;
 }
 
-
+.video-player {
+  height: 35vh;
+}
 
 .call-form {
   padding: 20px;
