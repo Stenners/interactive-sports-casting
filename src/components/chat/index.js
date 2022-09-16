@@ -14,7 +14,7 @@ function Chat() {
   const [message, setMessage] = useState("");
   const [name, setName] = useState("anth");
   const [messages, setMessages] = useState([]);
-  const [offSet, setOffSet] = useState(0);
+  const [offSet, setOffSet] = useState(-10);
 
   useEffect(() => {
     const name = generateName();
@@ -56,11 +56,11 @@ function Chat() {
       setMessage("");
     }
 
-    setOffSet(0);
+    setOffSet(-10);
   };
 
   const handleFocus = () => {
-    setOffSet(-100);
+    setOffSet(-50);
   };
 
   return (
