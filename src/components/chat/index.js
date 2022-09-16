@@ -37,7 +37,7 @@ function Chat() {
     const msgHistory = history.map(item => ({
       ...item,
       avatar: generator.generateRandomAvatar(item.name),
-      bgColor: generateColor(),
+      bgColor: item.bgColor,
     }))
     setMessages(msgHistory);
   });
