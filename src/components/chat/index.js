@@ -14,6 +14,7 @@ function Chat() {
   const [message, setMessage] = useState("");
   const [name, setName] = useState("anth");
   const [messages, setMessages] = useState([]);
+  const [offSet, setOffSet] = useState(0);
 
   useEffect(() => {
     const name = generateName();
@@ -54,10 +55,16 @@ function Chat() {
       });
       setMessage("");
     }
+
+    setOffSet(0);
+  };
+
+  const handleFocus = () => {
+    setOffSet(-100);
   };
 
   return (
-    <div className="chatWrap">
+    <div className="chatWrap" style={{transform: `translateY(${offSet}px)`}}>
       <div id="messages" ref={bottomRef} className="messages">
         {messages.map((msg) => (
           <div key={msg.message} className="messageWrap">
@@ -75,6 +82,7 @@ function Chat() {
           name="message"
           value={message}
           onChange={(event) => setMessage(event.target.value)}
+          onFocus={handleFocus}
         />
         {/* <button>Send</button> */}
       </form>
