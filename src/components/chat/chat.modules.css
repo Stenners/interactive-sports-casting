@@ -22,7 +22,7 @@
 .chatWrap .messages {
   padding: 0;
   flex-grow: 1;
-  overflow-y: hidden;
+  overflow-y: auto;
 }
 .chatWrap .messages > div {
   padding: 0.45rem;
@@ -46,6 +46,7 @@
 .messageWrap {
   display: flex;
   align-content: center;
+  text-align: center;
 }
 
 .avatar {
