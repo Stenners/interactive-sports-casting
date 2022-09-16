@@ -1,5 +1,6 @@
 .call {
   text-align: center;
+  min-height: 35vh;
 }
 
 .player-container {
@@ -11,7 +12,7 @@
 }
 
 .video-player {
-  height: 35vh;
+  min-height: 35vh;
 }
 
 .call-form {
