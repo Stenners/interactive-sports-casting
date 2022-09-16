@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   color: white;
-  height:50vh;
+  height:65vh;
 }
 .chatWrap form {
   width: 100%;
@@ -26,7 +26,7 @@
 .chatWrap .messages > div {
   padding: 0.45rem;
 }
-.chatWrap  .messages > div:nth-child(odd) {
+.chatWrap .messages > div:nth-child(odd) {
   background-color: #262626;
 }
 .chatWrap button {
