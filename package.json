@@ -8,11 +8,12 @@
     "@testing-library/user-event": "^13.5.0",
     "agora-extension-ai-denoiser": "^1.0.0",
     "agora-rtc-sdk-ng": "^4.14.0",
-    "random-avatar-generator": "^2.0.0",
+    "lodash": "^4.17.21",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
     "react-scripts": "5.0.1",
+    "seedrandom": "^3.0.5",
     "socket.io-client": "^4.5.2",
     "web-vitals": "^2.1.4"
   },

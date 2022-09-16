@@ -1,8 +1,9 @@
 import { io } from "socket.io-client";
+import { generateColor } from '../../utils/colorgen';
 import { generateName } from "../../utils/namegen";
 import { useEffect, useRef, useState } from "react";
 import "./chat.modules.css";
-import { AvatarGenerator } from 'random-avatar-generator';
+import { AvatarGenerator } from '../avatar';
 
 const socket = io("https://rocky-plateau-75193.herokuapp.com/");
 const generator = new AvatarGenerator();
@@ -35,7 +36,8 @@ function Chat() {
   socket.on("history", function (history) {
     const msgHistory = history.map(item => ({
       ...item,
-      avatar: generator.generateRandomAvatar(item.name)
+      avatar: generator.generateRandomAvatar(item.name),
+      bgColor: generateColor(),
     }))
     setMessages(msgHistory);
   });
@@ -46,7 +48,8 @@ function Chat() {
       socket.emit("chat message", {
         message: message,
         name,
-        avatar: generator.generateRandomAvatar(name)
+        avatar: generator.generateRandomAvatar(name),
+        bgColor: generateColor()
       });
       setMessage("");
     }
@@ -57,10 +60,10 @@ function Chat() {
       <div id="messages" ref={bottomRef} className="messages">
         {messages.map((msg) => (
           <div key={msg.message} className="messageWrap">
-            <img src={msg.avatar} alt="avatar" className="avatar" />
+            <img src={msg.avatar} alt="avatar" className="avatar" style={{backgroundColor: msg.bgColor}} />
             <span>
-                  {`${msg.name}: ${msg.message}`}
-                </span>
+              {`${msg.name}: ${msg.message}`}
+            </span>
           </div>
         ))}
       </div>
